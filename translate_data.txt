@@ -1,7 +1,0 @@
-buku/book
-kursi/chair
-hp/phone
-botol minum/drinking botel
-sepatu/shoe
-sandal/swalloy
-komputer/computer

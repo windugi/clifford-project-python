@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Countdown Calendar</title>
+    <style>
+      body {
+        background-color: green;
+        font-family: Arial, sans-serif;
+        color: white;
+        padding: 40px;
+      }
+
+      h1 {
+        color: orange;
+        text-decoration: underline;
+      }
+
+      .event {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .red {
+        color: red;
+      }
+
+      .lightblue {
+        color: lightblue;
+      }
+
+      .clock {
+        font-size: 20px;
+        text-align: right;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Countdown Calendar</h1>
+
+    {% for event in events %}
+    <div class="event {{ event.color }}">
+      It is {{ event.days_until }} days until {{ event.name }}
+    </div>
+    {% else %}
+    <p>No events found.</p>
+    {% endfor %}
+
+    <div class="clock">
+      <p>Date: <span id="live-date"></span></p>
+      <p>Time: <span id="live-time"></span></p>
+    </div>
+
+    <script>
+      function updateDateTime() {
+        const now = new Date();
+        const dateString = now.toLocaleDateString("en-GB"); // Format: DD/MM/YYYY
+        const timeString = now.toLocaleTimeString();
+        document.getElementById("live-date").textContent = dateString;
+        document.getElementById("live-time").textContent = timeString;
+      }
+
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    </script>
+  </body>
+</html>
